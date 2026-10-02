@@ -15,7 +15,7 @@ export function WorkPage() {
         title={<>Selected <span className="text-accent">work</span></>}
         description="The projects below are demonstration case studies that show the kind of systems we design and build. Real client work will be published here with client permission."
       />
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-x space-y-14 py-20 sm:py-24">
           {projects.map((p, i) => (
             <Reveal key={p.slug} delay={Math.min(i * 80, 160)}>
@@ -32,7 +32,7 @@ export function WorkPage() {
                 </div>
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">{p.industry}</p>
-                  <h2 className="mt-3 font-display text-2xl font-bold text-primary sm:text-3xl">{p.title}</h2>
+                  <h2 className="mt-3 font-display text-2xl font-bold text-heading sm:text-3xl">{p.title}</h2>
                   <p className="mt-3 max-w-lg text-[15px] leading-relaxed text-muted-foreground">{p.summary}</p>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {p.tags.map((t) => (
@@ -41,7 +41,7 @@ export function WorkPage() {
                       </span>
                     ))}
                   </div>
-                  <span className="mt-6 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-primary transition-colors group-hover:text-accent">
+                  <span className="mt-6 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-heading transition-colors group-hover:text-accent">
                     <span className="link-underline">View case study</span>
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
                   </span>
@@ -51,7 +51,7 @@ export function WorkPage() {
           ))}
           <Reveal>
             <p className="rounded-2xl border border-dashed border-border bg-[hsl(var(--soft))] p-6 text-center text-sm text-muted-foreground">
-              <span className="font-semibold text-primary/70">[ADD CLIENT PROJECT HERE]</span> — this space is ready
+              <span className="font-semibold text-heading/70">[ADD CLIENT PROJECT HERE]</span> — this space is ready
               for real case studies as they're completed and approved for publishing.
             </p>
           </Reveal>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { Logo } from "@/components/Logo";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Link, useRoute } from "@/lib/router";
 import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
@@ -49,13 +50,13 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         solid
-          ? "border-b border-primary/8 bg-white/85 shadow-[0_4px_24px_-12px_rgba(11,35,64,0.15)] backdrop-blur-xl"
+          ? "border-b border-heading/8 bg-background/85 shadow-[0_4px_24px_-12px_rgba(11,35,64,0.15)] backdrop-blur-xl"
           : "border-b border-transparent bg-transparent",
       )}
     >
       <div className="container-x flex h-[68px] items-center justify-between">
         <Link to="/" aria-label="INCASOFT Solutions — home" className="rounded-md">
-          <Logo dark={solid} />
+          <Logo onDark={!solid} />
         </Link>
 
         {/* Desktop nav */}
@@ -74,6 +75,9 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+          <ThemeToggle
+            className={cn("-mx-3", onDarkHero ? "text-white/85 hover:bg-white/10 hover:text-white" : "text-heading hover:bg-heading/5")}
+          />
           <Link
             to="/contact"
             onClick={() => trackEvent("start_project_click", { location: "header" })}
@@ -84,12 +88,16 @@ export function Header() {
           </Link>
         </nav>
 
-        {/* Mobile toggle */}
+        {/* Mobile controls */}
+        <div className="flex items-center gap-1 lg:hidden">
+        <ThemeToggle
+          className={onDarkHero ? "text-white hover:bg-white/10" : "text-heading hover:bg-heading/5"}
+        />
         <button
           type="button"
           className={cn(
-            "inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden",
-            onDarkHero ? "text-white hover:bg-white/10" : "text-primary hover:bg-primary/5",
+            "inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors",
+            onDarkHero ? "text-white hover:bg-white/10" : "text-heading hover:bg-heading/5",
           )}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -98,6 +106,7 @@ export function Header() {
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
+        </div>
       </div>
 
     </header>
@@ -106,7 +115,7 @@ export function Header() {
     <div
       id="mobile-menu"
       className={cn(
-        "fixed inset-x-0 top-[68px] bottom-0 z-[45] bg-white transition-all duration-300 ease-out lg:hidden",
+        "fixed inset-x-0 top-[68px] bottom-0 z-[45] bg-background transition-all duration-300 ease-out lg:hidden",
         open ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0",
       )}
     >
@@ -116,7 +125,7 @@ export function Header() {
               key={item.to}
               to={item.to}
               className={cn(
-                "flex min-h-[52px] items-center justify-between border-b border-border/70 py-3 font-display text-2xl font-semibold text-primary transition-all duration-500",
+                "flex min-h-[52px] items-center justify-between border-b border-border/70 py-3 font-display text-2xl font-semibold text-heading transition-all duration-500",
                 open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
                 item.to === "/start-a-project" && "text-accent",
               )}

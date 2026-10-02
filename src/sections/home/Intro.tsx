@@ -2,13 +2,13 @@ import { Reveal } from "@/components/Reveal";
 
 export function Intro() {
   return (
-    <section className="relative bg-white" aria-labelledby="intro-heading">
+    <section className="relative bg-background" aria-labelledby="intro-heading">
       <div className="container-x grid gap-10 py-24 sm:py-32 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
         <Reveal>
           <p className="eyebrow">Who we are</p>
           <h2
             id="intro-heading"
-            className="mt-5 font-display text-[clamp(1.7rem,3.6vw,2.9rem)] font-bold uppercase leading-[1.1] text-primary text-balance"
+            className="mt-5 font-display text-[clamp(1.7rem,3.6vw,2.9rem)] font-bold uppercase leading-[1.1] text-heading text-balance"
           >
             Your ideas. Our technology.{" "}
             <span className="text-accent">Endless possibilities.</span>

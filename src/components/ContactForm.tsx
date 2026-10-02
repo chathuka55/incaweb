@@ -5,7 +5,7 @@ import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 const inputCls =
-  "min-h-[48px] w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-primary placeholder:text-muted-foreground/60 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25";
+  "min-h-[48px] w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-heading placeholder:text-muted-foreground/60 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25";
 
 export function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "", website: "" });
@@ -54,12 +54,12 @@ export function ContactForm() {
     return (
       <div className="flex h-full min-h-[320px] flex-col items-center justify-center rounded-2xl border border-emerald-200 bg-emerald-50/60 p-8 text-center" role="status">
         <CheckCircle2 className="h-12 w-12 text-emerald-500" aria-hidden="true" />
-        <h3 className="mt-5 font-display text-xl font-bold text-primary">Message ready.</h3>
+        <h3 className="mt-5 font-display text-xl font-bold text-heading">Message ready.</h3>
         <p className="mt-2 max-w-sm text-sm text-muted-foreground">{note}</p>
         <button
           type="button"
           onClick={() => { setForm({ name: "", email: "", company: "", message: "", website: "" }); setStatus("idle"); }}
-          className="mt-6 min-h-[44px] rounded-full border border-border bg-white px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:border-accent"
+          className="mt-6 min-h-[44px] rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold text-heading transition-colors hover:border-accent"
         >
           Send another message
         </button>
@@ -76,22 +76,22 @@ export function ContactForm() {
       />
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="c-name" className="mb-1.5 block text-xs font-semibold text-primary">Name *</label>
+          <label htmlFor="c-name" className="mb-1.5 block text-xs font-semibold text-heading">Name *</label>
           <input id="c-name" type="text" autoComplete="name" value={form.name} onChange={(e) => set("name", e.target.value)} className={inputCls} aria-invalid={!!errors.name} />
           {errors.name && <p role="alert" className="mt-1.5 text-xs font-medium text-red-600">{errors.name}</p>}
         </div>
         <div>
-          <label htmlFor="c-email" className="mb-1.5 block text-xs font-semibold text-primary">Email *</label>
+          <label htmlFor="c-email" className="mb-1.5 block text-xs font-semibold text-heading">Email *</label>
           <input id="c-email" type="email" autoComplete="email" value={form.email} onChange={(e) => set("email", e.target.value)} className={inputCls} aria-invalid={!!errors.email} />
           {errors.email && <p role="alert" className="mt-1.5 text-xs font-medium text-red-600">{errors.email}</p>}
         </div>
       </div>
       <div>
-        <label htmlFor="c-company" className="mb-1.5 block text-xs font-semibold text-primary">Company</label>
+        <label htmlFor="c-company" className="mb-1.5 block text-xs font-semibold text-heading">Company</label>
         <input id="c-company" type="text" autoComplete="organization" value={form.company} onChange={(e) => set("company", e.target.value)} className={inputCls} />
       </div>
       <div>
-        <label htmlFor="c-message" className="mb-1.5 block text-xs font-semibold text-primary">Message *</label>
+        <label htmlFor="c-message" className="mb-1.5 block text-xs font-semibold text-heading">Message *</label>
         <textarea
           id="c-message" rows={5} value={form.message} onChange={(e) => set("message", e.target.value)}
           placeholder="Tell us about your idea, problem or business process…"

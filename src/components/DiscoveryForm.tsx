@@ -48,7 +48,7 @@ function OptionPill({ label, selected, onSelect }: { label: string; selected: bo
         "min-h-[48px] rounded-xl border px-4 py-3 text-left text-sm font-semibold transition-all duration-300",
         selected
           ? "border-accent bg-primary text-white shadow-[0_10px_28px_-12px_rgba(11,35,64,0.5)]"
-          : "border-border bg-white text-primary hover:border-accent/50",
+          : "border-border bg-card text-heading hover:border-accent/50",
       )}
     >
       <span className="flex items-center justify-between gap-2">
@@ -62,7 +62,7 @@ function OptionPill({ label, selected, onSelect }: { label: string; selected: bo
 }
 
 const inputCls =
-  "min-h-[48px] w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-primary placeholder:text-muted-foreground/60 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25";
+  "min-h-[48px] w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-heading placeholder:text-muted-foreground/60 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25";
 
 export function DiscoveryForm() {
   const [step, setStep] = useState(1);
@@ -136,14 +136,14 @@ export function DiscoveryForm() {
         role="status"
       >
         <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-500" aria-hidden="true" />
-        <h3 className="mt-5 font-display text-2xl font-bold text-primary">Thank you, {form.name.split(" ")[0]}.</h3>
+        <h3 className="mt-5 font-display text-2xl font-bold text-heading">Thank you, {form.name.split(" ")[0]}.</h3>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
           {submitNote} We'll review your {form.projectType.toLowerCase()} idea and get back to you shortly.
         </p>
         <button
           type="button"
           onClick={() => { setForm(initial); setStep(1); setStatus("idle"); }}
-          className="mt-7 inline-flex min-h-[44px] items-center gap-2 rounded-full border border-border bg-white px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:border-accent"
+          className="mt-7 inline-flex min-h-[44px] items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold text-heading transition-colors hover:border-accent"
         >
           <RotateCcw className="h-4 w-4" aria-hidden="true" />
           Submit another idea
@@ -153,11 +153,11 @@ export function DiscoveryForm() {
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-[0_24px_60px_-30px_rgba(11,35,64,0.3)]">
+    <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[0_24px_60px_-30px_rgba(11,35,64,0.3)]">
       {/* progress */}
       <div className="border-b border-border px-6 py-5 sm:px-8">
         <div className="flex items-center justify-between text-xs font-semibold">
-          <span className="uppercase tracking-[0.16em] text-primary">Step {step} of {steps.length}</span>
+          <span className="uppercase tracking-[0.16em] text-heading">Step {step} of {steps.length}</span>
           <span className="text-muted-foreground">{steps[step - 1].title}</span>
         </div>
         <div className="mt-3 h-1 overflow-hidden rounded-full bg-border" role="progressbar" aria-valuenow={step} aria-valuemin={1} aria-valuemax={steps.length}>
@@ -192,7 +192,7 @@ export function DiscoveryForm() {
           >
             {step === 1 && (
               <fieldset>
-                <legend className="font-display text-xl font-bold text-primary">What do you want to build?</legend>
+                <legend className="font-display text-xl font-bold text-heading">What do you want to build?</legend>
                 <div className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
                   {projectTypes.map((t) => (
                     <OptionPill key={t} label={t} selected={form.projectType === t} onSelect={() => set("projectType", t)} />
@@ -204,7 +204,7 @@ export function DiscoveryForm() {
 
             {step === 2 && (
               <fieldset>
-                <legend className="font-display text-xl font-bold text-primary">What industry are you in?</legend>
+                <legend className="font-display text-xl font-bold text-heading">What industry are you in?</legend>
                 <div className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
                   {industryOptions.map((t) => (
                     <OptionPill key={t} label={t} selected={form.industry === t} onSelect={() => set("industry", t)} />
@@ -216,7 +216,7 @@ export function DiscoveryForm() {
 
             {step === 3 && (
               <div>
-                <label htmlFor="idea" className="font-display text-xl font-bold text-primary">Tell us about your idea</label>
+                <label htmlFor="idea" className="font-display text-xl font-bold text-heading">Tell us about your idea</label>
                 <p className="mt-1.5 text-sm text-muted-foreground">
                   What problem are you solving? Who will use it? Anything you already have in place?
                 </p>
@@ -236,28 +236,28 @@ export function DiscoveryForm() {
 
             {step === 4 && (
               <fieldset>
-                <legend className="font-display text-xl font-bold text-primary">Your contact details</legend>
+                <legend className="font-display text-xl font-bold text-heading">Your contact details</legend>
                 <div className="mt-5 grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="d-name" className="mb-1.5 block text-xs font-semibold text-primary">Name *</label>
+                    <label htmlFor="d-name" className="mb-1.5 block text-xs font-semibold text-heading">Name *</label>
                     <input id="d-name" type="text" autoComplete="name" value={form.name} onChange={(e) => set("name", e.target.value)} className={inputCls} aria-invalid={!!errors.name} />
                     {errors.name && <p role="alert" className="mt-1.5 text-xs font-medium text-red-600">{errors.name}</p>}
                   </div>
                   <div>
-                    <label htmlFor="d-company" className="mb-1.5 block text-xs font-semibold text-primary">Company</label>
+                    <label htmlFor="d-company" className="mb-1.5 block text-xs font-semibold text-heading">Company</label>
                     <input id="d-company" type="text" autoComplete="organization" value={form.company} onChange={(e) => set("company", e.target.value)} className={inputCls} />
                   </div>
                   <div>
-                    <label htmlFor="d-email" className="mb-1.5 block text-xs font-semibold text-primary">Email *</label>
+                    <label htmlFor="d-email" className="mb-1.5 block text-xs font-semibold text-heading">Email *</label>
                     <input id="d-email" type="email" autoComplete="email" value={form.email} onChange={(e) => set("email", e.target.value)} className={inputCls} aria-invalid={!!errors.email} />
                     {errors.email && <p role="alert" className="mt-1.5 text-xs font-medium text-red-600">{errors.email}</p>}
                   </div>
                   <div>
-                    <label htmlFor="d-phone" className="mb-1.5 block text-xs font-semibold text-primary">Phone</label>
+                    <label htmlFor="d-phone" className="mb-1.5 block text-xs font-semibold text-heading">Phone</label>
                     <input id="d-phone" type="tel" autoComplete="tel" value={form.phone} onChange={(e) => set("phone", e.target.value)} className={inputCls} />
                   </div>
                   <div className="sm:col-span-2">
-                    <label htmlFor="d-whatsapp" className="mb-1.5 block text-xs font-semibold text-primary">WhatsApp <span className="font-normal text-muted-foreground">(if different)</span></label>
+                    <label htmlFor="d-whatsapp" className="mb-1.5 block text-xs font-semibold text-heading">WhatsApp <span className="font-normal text-muted-foreground">(if different)</span></label>
                     <input id="d-whatsapp" type="tel" value={form.whatsapp} onChange={(e) => set("whatsapp", e.target.value)} className={inputCls} />
                   </div>
                 </div>
@@ -275,7 +275,7 @@ export function DiscoveryForm() {
             type="button"
             onClick={back}
             disabled={step === 1}
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-muted-foreground transition-colors enabled:hover:text-primary disabled:opacity-0"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-muted-foreground transition-colors enabled:hover:text-heading disabled:opacity-0"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             Back

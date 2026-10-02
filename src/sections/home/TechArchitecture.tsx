@@ -9,12 +9,12 @@ import { techLayers } from "@/data/process";
  */
 export function TechArchitecture() {
   return (
-    <section className="relative overflow-hidden bg-white" aria-labelledby="tech-heading">
+    <section className="relative overflow-hidden bg-background" aria-labelledby="tech-heading">
       <div className="bg-grid-faint pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black,transparent)]" aria-hidden="true" />
       <div className="container-x relative py-24 sm:py-32">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow justify-center after:h-px after:w-8 after:bg-accent/70">Technology</p>
-          <h2 id="tech-heading" className="mt-5 font-display text-[clamp(1.7rem,3.6vw,2.9rem)] font-bold uppercase leading-[1.1] text-primary text-balance">
+          <h2 id="tech-heading" className="mt-5 font-display text-[clamp(1.7rem,3.6vw,2.9rem)] font-bold uppercase leading-[1.1] text-heading text-balance">
             Technology that powers our solutions
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
@@ -33,7 +33,7 @@ export function TechArchitecture() {
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <div>
-                        <h3 className="font-display text-base font-bold text-primary sm:text-lg">{layer.label}</h3>
+                        <h3 className="font-display text-base font-bold text-heading sm:text-lg">{layer.label}</h3>
                         <p className="text-xs text-muted-foreground">{layer.note}</p>
                       </div>
                     </div>
@@ -41,7 +41,7 @@ export function TechArchitecture() {
                       {layer.items.map((item) => (
                         <span
                           key={item}
-                          className="rounded-full border border-border bg-[hsl(var(--soft))] px-3 py-1.5 text-[11.5px] font-semibold text-primary transition-colors duration-300 group-hover:border-accent/40"
+                          className="rounded-full border border-border bg-[hsl(var(--soft))] px-3 py-1.5 text-[11.5px] font-semibold text-heading transition-colors duration-300 group-hover:border-accent/40"
                         >
                           {item}
                         </span>

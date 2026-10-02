@@ -5,7 +5,7 @@ import { trackEvent } from "@/lib/analytics";
 /** "Have an idea?" discovery CTA band */
 export function DiscoveryCTA() {
   return (
-    <section className="bg-white" aria-labelledby="idea-heading">
+    <section className="bg-background" aria-labelledby="idea-heading">
       <div className="container-x py-20 sm:py-24">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl bg-[hsl(var(--navy-deep))] px-7 py-14 text-center text-white sm:px-14 sm:py-18 sm:py-20">
@@ -39,7 +39,7 @@ export function FinalCTA() {
     <section className="bg-[hsl(var(--soft))]" aria-labelledby="final-cta-heading">
       <div className="container-x py-24 sm:py-32">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <h2 id="final-cta-heading" className="font-display text-[clamp(1.9rem,4.4vw,3.4rem)] font-bold uppercase leading-[1.06] text-primary text-balance">
+          <h2 id="final-cta-heading" className="font-display text-[clamp(1.9rem,4.4vw,3.4rem)] font-bold uppercase leading-[1.06] text-heading text-balance">
             Ready to build something{" "}
             <span className="text-accent">better?</span>
           </h2>

@@ -19,7 +19,7 @@ export function CaseStudyPage({ slug }: { slug: string }) {
         title={project.title}
         description={project.summary}
       />
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-x py-16 sm:py-20">
           <Reveal>
             <div className="relative">
@@ -46,7 +46,7 @@ export function CaseStudyPage({ slug }: { slug: string }) {
                   {project.features.map((f) => (
                     <li key={f} className="flex items-start gap-3 rounded-xl border border-border bg-[hsl(var(--soft))] p-4">
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                      <span className="text-sm font-medium text-primary">{f}</span>
+                      <span className="text-sm font-medium text-heading">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -56,7 +56,7 @@ export function CaseStudyPage({ slug }: { slug: string }) {
                 <p className="mt-4 max-w-xl rounded-xl border border-dashed border-border bg-[hsl(var(--soft))] p-5 text-sm leading-relaxed text-muted-foreground">
                   This is a demonstration project, so no client metrics are shown. For real projects,
                   measurable outcomes are agreed with the client up front and reported here.
-                  <span className="mt-2 block font-semibold text-primary/60">[ADD PROJECT RESULTS HERE]</span>
+                  <span className="mt-2 block font-semibold text-heading/60">[ADD PROJECT RESULTS HERE]</span>
                 </p>
               </Reveal>
             </div>
@@ -68,11 +68,11 @@ export function CaseStudyPage({ slug }: { slug: string }) {
                   <dl className="mt-4 space-y-3 text-sm">
                     <div className="flex justify-between gap-4">
                       <dt className="text-muted-foreground">Industry</dt>
-                      <dd className="text-right font-semibold text-primary">{project.industry}</dd>
+                      <dd className="text-right font-semibold text-heading">{project.industry}</dd>
                     </div>
                     <div className="flex justify-between gap-4">
                       <dt className="text-muted-foreground">Services</dt>
-                      <dd className="text-right font-semibold text-primary">{project.tags.join(" · ")}</dd>
+                      <dd className="text-right font-semibold text-heading">{project.tags.join(" · ")}</dd>
                     </div>
                     <div className="flex justify-between gap-4">
                       <dt className="text-muted-foreground">Status</dt>
@@ -95,7 +95,7 @@ export function CaseStudyPage({ slug }: { slug: string }) {
             </Reveal>
           </div>
 
-          <Link to="/work" className="mt-14 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary">
+          <Link to="/work" className="mt-14 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-heading">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             Back to all work
           </Link>

@@ -23,8 +23,8 @@ const variants = {
     "bg-accent text-[#06202E] hover:bg-[#3ec3e0] hover:shadow-[0_8px_30px_-6px_hsl(192_71%_49%/0.55)] active:scale-[0.98]",
   secondary:
     "border border-white/25 bg-white/5 text-white backdrop-blur-sm hover:border-accent/60 hover:text-accent active:scale-[0.98]",
-  "ghost-light": "border border-primary/15 bg-white text-primary hover:border-accent hover:text-accent active:scale-[0.98]",
-  "ghost-dark": "text-primary hover:text-accent px-2",
+  "ghost-light": "border border-heading/15 bg-card text-heading hover:border-accent hover:text-accent active:scale-[0.98]",
+  "ghost-dark": "text-heading hover:text-accent px-2",
 };
 
 export function CTA({

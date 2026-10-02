@@ -12,7 +12,7 @@ export function StartProjectPage() {
         <div className="grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-16">
           <Reveal>
             <p className="eyebrow">Start a project</p>
-            <h1 id="start-heading" className="mt-5 font-display text-[clamp(1.9rem,4.4vw,3.2rem)] font-bold uppercase leading-[1.06] text-primary text-balance">
+            <h1 id="start-heading" className="mt-5 font-display text-[clamp(1.9rem,4.4vw,3.2rem)] font-bold uppercase leading-[1.06] text-heading text-balance">
               Tell us what you're trying to build.
             </h1>
             <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted-foreground sm:text-base">

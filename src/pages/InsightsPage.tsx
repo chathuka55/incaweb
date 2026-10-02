@@ -49,14 +49,14 @@ export function InsightsPage() {
         title={<>Ideas on software <span className="text-accent">&amp; business</span></>}
         description="Practical notes on software, automation and digital transformation for growing businesses. New articles are on the way."
       />
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-x py-20 sm:py-24">
           <div className="grid gap-6 md:grid-cols-3">
             {articles.map((a, i) => (
               <Reveal key={a.slug} delay={i * 90}>
-                <article className="group flex h-full flex-col rounded-2xl border border-border bg-white p-6 transition-all duration-400 hover:border-accent/50 hover:shadow-[0_20px_50px_-24px_rgba(11,35,64,0.35)]">
+                <article className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-400 hover:border-accent/50 hover:shadow-[0_20px_50px_-24px_rgba(11,35,64,0.35)]">
                   <div className="flex items-center justify-between">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--soft))] text-primary">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--soft))] text-heading">
                       <BookOpen className="h-4.5 w-4.5 h-[18px] w-[18px]" aria-hidden="true" />
                     </span>
                     <span className="rounded-full bg-[hsl(var(--soft))] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground">
@@ -64,7 +64,7 @@ export function InsightsPage() {
                     </span>
                   </div>
                   <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">{a.topic}</p>
-                  <h2 className="mt-2 font-display text-lg font-bold leading-snug text-primary">{a.title}</h2>
+                  <h2 className="mt-2 font-display text-lg font-bold leading-snug text-heading">{a.title}</h2>
                   <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">{a.excerpt}</p>
                   <p className="mt-auto pt-5 text-xs text-muted-foreground/70">
                     [ADD ARTICLE HERE] — this topic is planned for the INCASOFT insights series.

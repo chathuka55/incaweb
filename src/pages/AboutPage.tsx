@@ -32,10 +32,10 @@ export function AboutPage() {
         title={<><span className="text-accent">Smart solutions.</span> Better business. Stronger future.</>}
         description="INCASOFT Solutions is a software development company building practical digital solutions for growing businesses — from custom software and business systems to automation and AI."
       />
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-x grid gap-12 py-20 sm:py-24 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <Reveal>
-            <h2 className="font-display text-2xl font-bold uppercase text-primary sm:text-3xl">What we believe</h2>
+            <h2 className="font-display text-2xl font-bold uppercase text-heading sm:text-3xl">What we believe</h2>
             <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
               Good software doesn't demand attention — it quietly makes everything else work better.
               That's the standard we build to: technology shaped around the business, delivered with
@@ -50,7 +50,7 @@ export function AboutPage() {
               <Reveal key={v.title} delay={i * 80}>
                 <div className="h-full rounded-2xl border border-border bg-[hsl(var(--soft))] p-6 transition-all duration-300 hover:border-accent/50">
                   <span className="font-display text-xs font-bold text-accent">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="mt-3 font-display text-[16px] font-bold text-primary">{v.title}</h3>
+                  <h3 className="mt-3 font-display text-[16px] font-bold text-heading">{v.title}</h3>
                   <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">{v.text}</p>
                 </div>
               </Reveal>

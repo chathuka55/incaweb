@@ -41,10 +41,10 @@ export function ContactPage() {
         title={<>Let's build <span className="text-accent">something.</span></>}
         description="Have an idea, problem or business process that could be improved with technology? Let's talk."
       />
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-x grid gap-12 py-20 sm:py-24 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
           <Reveal>
-            <h2 className="font-display text-2xl font-bold uppercase text-primary">Reach us directly</h2>
+            <h2 className="font-display text-2xl font-bold uppercase text-heading">Reach us directly</h2>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
               Choose whichever channel suits you. No tickets, no bots — you'll talk to the people who build the software.
             </p>
@@ -57,12 +57,12 @@ export function ContactPage() {
                   onClick={() => c.event && trackEvent(c.event, { location: "contact_page" })}
                   className="group flex min-h-[64px] items-center gap-4 rounded-2xl border border-border p-4 transition-all duration-300 hover:border-accent/60 hover:shadow-[0_16px_40px_-20px_rgba(11,35,64,0.3)]"
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--soft))] text-primary transition-colors duration-300 group-hover:bg-accent group-hover:text-[#06202E]">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--soft))] text-heading transition-colors duration-300 group-hover:bg-accent group-hover:text-[#06202E]">
                     <c.icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <span className="min-w-0">
                     <span className="block text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{c.label} · {c.note}</span>
-                    <span className="block truncate text-[15px] font-semibold text-primary">{c.value}</span>
+                    <span className="block truncate text-[15px] font-semibold text-heading">{c.value}</span>
                   </span>
                 </a>
               ))}
@@ -71,13 +71,13 @@ export function ContactPage() {
               <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Follow us</span>
               <a
                 href={company.facebook} target="_blank" rel="noopener noreferrer" aria-label="INCASOFT on Facebook"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-primary transition-all duration-300 hover:border-accent hover:text-accent"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-heading transition-all duration-300 hover:border-accent hover:text-accent"
               >
                 <Facebook className="h-[18px] w-[18px]" />
               </a>
               <a
                 href={company.instagram} target="_blank" rel="noopener noreferrer" aria-label="INCASOFT on Instagram"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-primary transition-all duration-300 hover:border-accent hover:text-accent"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-heading transition-all duration-300 hover:border-accent hover:text-accent"
               >
                 <Instagram className="h-[18px] w-[18px]" />
               </a>
@@ -86,7 +86,7 @@ export function ContactPage() {
 
           <Reveal delay={140}>
             <div className="rounded-2xl border border-border bg-[hsl(var(--soft))] p-6 sm:p-8">
-              <h2 className="font-display text-xl font-bold text-primary">Send us a message</h2>
+              <h2 className="font-display text-xl font-bold text-heading">Send us a message</h2>
               <p className="mt-1.5 text-sm text-muted-foreground">We usually reply within one business day.</p>
               <div className="mt-6">
                 <ContactForm />

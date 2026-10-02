@@ -36,7 +36,18 @@
       ]
     }
     </script>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B2340'/%3E%3Cpath d='M11 23V9h2.6v14H11zm7.4 0V9h2.6v5.4l3.4-5.4h3l-4.2 6.4L27.6 23h-3.1l-3.2-5.4-2.9 4.4V23z' fill='%2326B5D6'/%3E%3C/svg%3E" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <!-- Apply saved/system theme before first paint (avoids a light flash in dark mode) -->
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        var d = t === "dark" || ((!t || t === "system") && matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.classList.toggle("dark", d);
+        document.documentElement.style.colorScheme = d ? "dark" : "light";
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

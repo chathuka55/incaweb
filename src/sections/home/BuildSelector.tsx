@@ -21,7 +21,7 @@ export function BuildSelector() {
       <div className="container-x relative py-24 sm:py-32">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">Start here</p>
-          <h2 id="build-heading" className="mt-5 font-display text-[clamp(1.7rem,3.6vw,2.9rem)] font-bold uppercase leading-[1.1] text-primary text-balance">
+          <h2 id="build-heading" className="mt-5 font-display text-[clamp(1.7rem,3.6vw,2.9rem)] font-bold uppercase leading-[1.1] text-heading text-balance">
             What are you looking to build?
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
@@ -48,7 +48,7 @@ export function BuildSelector() {
                       "group relative min-h-[64px] overflow-hidden rounded-xl border px-4 py-3.5 text-left text-sm font-semibold transition-all duration-300",
                       selected
                         ? "border-accent bg-primary text-white shadow-[0_14px_36px_-12px_rgba(11,35,64,0.5)]"
-                        : "border-border bg-white text-primary hover:border-accent/50 hover:shadow-[0_10px_28px_-14px_rgba(11,35,64,0.3)]",
+                        : "border-border bg-card text-heading hover:border-accent/50 hover:shadow-[0_10px_28px_-14px_rgba(11,35,64,0.3)]",
                     )}
                   >
                     {selected && (

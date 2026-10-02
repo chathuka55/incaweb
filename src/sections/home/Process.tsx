@@ -38,11 +38,11 @@ export function Process() {
   const activeCount = Math.floor(progress * processSteps.length + 0.35);
 
   return (
-    <section className="bg-white" aria-labelledby="process-heading">
+    <section className="bg-background" aria-labelledby="process-heading">
       <div className="container-x py-24 sm:py-32">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">How we work</p>
-          <h2 id="process-heading" className="mt-5 font-display text-[clamp(1.7rem,3.6vw,2.9rem)] font-bold uppercase leading-[1.1] text-primary text-balance">
+          <h2 id="process-heading" className="mt-5 font-display text-[clamp(1.7rem,3.6vw,2.9rem)] font-bold uppercase leading-[1.1] text-heading text-balance">
             From idea to reality
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
@@ -71,7 +71,7 @@ export function Process() {
                       "absolute left-[19px] top-1.5 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border font-display text-[11px] font-bold transition-all duration-500 sm:left-1/2",
                       active
                         ? "border-accent bg-accent text-[#06202E] glow-cyan"
-                        : "border-border bg-white text-primary/40",
+                        : "border-border bg-card text-heading/40",
                     )}
                     aria-hidden="true"
                   >
@@ -87,7 +87,7 @@ export function Process() {
                     <h3
                       className={cn(
                         "font-display text-xl font-bold uppercase tracking-wide transition-colors duration-500 sm:text-2xl",
-                        active ? "text-primary" : "text-primary/35",
+                        active ? "text-heading" : "text-heading/35",
                       )}
                     >
                       {step.title}

@@ -15,6 +15,7 @@
     --muted-ink: 215 16% 47%;       /* #64748B */
     --soft: 204 33% 97%;            /* #F5F8FA */
     --line: 210 30% 90%;
+    --heading: var(--navy);
 
     --background: 0 0% 100%;
     --foreground: var(--ink);
@@ -36,6 +37,19 @@
     --input: var(--line);
     --ring: var(--cyan);
     --radius: 0.9rem;
+  }
+
+  .dark {
+    --ink: 210 35% 88%;
+    --muted-ink: 213 16% 64%;
+    --soft: 214 52% 8%;
+    --line: 214 32% 17%;
+    --heading: 205 45% 96%;
+
+    --background: 215 60% 5%;
+    --card: 214 46% 9%;
+    --popover: 214 46% 9%;
+    --secondary-foreground: var(--heading);
   }
 }
 
@@ -60,6 +74,9 @@
   ::selection {
     background: hsl(var(--cyan) / 0.25);
     color: hsl(var(--navy-deep));
+  }
+  .dark ::selection {
+    color: hsl(var(--heading));
   }
   :focus-visible {
     outline: 2px solid hsl(var(--cyan));

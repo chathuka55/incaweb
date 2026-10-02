@@ -13,7 +13,7 @@ export function Footer() {
       <div className="container-x relative">
         <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] lg:py-20">
           <div>
-            <Logo />
+            <Logo onDark />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/60">{company.tagline}</p>
             <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/60">{company.positioning}</p>
             <div className="mt-6 flex gap-3">

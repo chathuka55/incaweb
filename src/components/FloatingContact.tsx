@@ -48,7 +48,7 @@ export function FloatingContact() {
         role="dialog"
         aria-label="Contact options"
         className={cn(
-          "w-[270px] origin-bottom-right rounded-2xl border border-border bg-white p-2 shadow-[0_16px_50px_-12px_rgba(11,35,64,0.35)] transition-all duration-300",
+          "w-[270px] origin-bottom-right rounded-2xl border border-border bg-card p-2 shadow-[0_16px_50px_-12px_rgba(11,35,64,0.35)] transition-all duration-300",
           open ? "pointer-events-auto scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0",
         )}
       >
@@ -62,7 +62,7 @@ export function FloatingContact() {
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366]/10 text-[#1da851]">
             <MessageCircle className="h-[18px] w-[18px]" />
           </span>
-          <span className="text-sm font-semibold text-primary">WhatsApp</span>
+          <span className="text-sm font-semibold text-heading">WhatsApp</span>
           <ArrowUpRight className="ml-auto h-4 w-4 text-muted-foreground" />
         </a>
         <a
@@ -72,7 +72,7 @@ export function FloatingContact() {
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/10 text-accent">
             <Mail className="h-[18px] w-[18px]" />
           </span>
-          <span className="text-sm font-semibold text-primary">Email</span>
+          <span className="text-sm font-semibold text-heading">Email</span>
           <ArrowUpRight className="ml-auto h-4 w-4 text-muted-foreground" />
         </a>
         <Link
@@ -80,10 +80,10 @@ export function FloatingContact() {
           onClick={() => trackEvent("start_project_click", { location: "floating_widget" })}
           className="flex min-h-[48px] items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-[hsl(var(--soft))]"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-heading/10 text-heading">
             <Rocket className="h-[18px] w-[18px]" />
           </span>
-          <span className="text-sm font-semibold text-primary">Start a Project</span>
+          <span className="text-sm font-semibold text-heading">Start a Project</span>
           <ArrowUpRight className="ml-auto h-4 w-4 text-muted-foreground" />
         </Link>
       </div>

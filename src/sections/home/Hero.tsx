@@ -2,6 +2,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { useRef } from "react";
 import { CTA } from "@/components/CTA";
 import { DashboardVisual } from "@/components/DashboardVisual";
+import { ParticleDrift } from "@/components/ParticleDrift";
 import { trackEvent } from "@/lib/analytics";
 
 const container = {
@@ -26,27 +27,11 @@ export function Hero() {
 
   return (
     <section ref={ref} className="relative overflow-hidden bg-[hsl(var(--navy-deep))] text-white" aria-labelledby="hero-heading">
-      {/* signature backdrop: grid + connected nodes + glow */}
+      {/* backdrop: particle drift field + glow */}
       <motion.div style={{ y: bgY }} className="absolute inset-0" aria-hidden="true">
-        <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_80%_70%_at_60%_30%,black,transparent)]" />
+        <ParticleDrift className="absolute inset-0 h-full w-full [mask-image:linear-gradient(to_bottom,black_75%,transparent)]" />
         <div className="absolute -top-32 right-[-10%] h-[520px] w-[520px] rounded-full bg-accent/12 blur-[130px]" />
         <div className="absolute bottom-[-20%] left-[-10%] h-[420px] w-[420px] rounded-full bg-[hsl(var(--cyan-light))]/8 blur-[120px]" />
-        <svg className="absolute inset-0 h-full w-full opacity-60" preserveAspectRatio="none" viewBox="0 0 1200 700">
-          <g stroke="hsl(192 71% 49% / 0.25)" strokeWidth="1">
-            <line x1="120" y1="120" x2="360" y2="240" />
-            <line x1="360" y1="240" x2="620" y2="120" />
-            <line x1="620" y1="120" x2="900" y2="260" />
-            <line x1="360" y1="240" x2="540" y2="480" />
-            <line x1="900" y1="260" x2="1080" y2="140" />
-          </g>
-          {[
-            [120, 120, 4], [360, 240, 6], [620, 120, 4], [900, 260, 5], [540, 480, 4], [1080, 140, 3],
-          ].map(([cx, cy, r], i) => (
-            <circle key={i} cx={cx} cy={cy} r={r} fill="hsl(192 71% 49% / 0.6)">
-              <animate attributeName="opacity" values="0.4;1;0.4" dur={`${3 + i * 0.7}s`} repeatCount="indefinite" />
-            </circle>
-          ))}
-        </svg>
       </motion.div>
 
       <motion.div style={{ y: fgY }} className="container-x relative">
@@ -98,7 +83,7 @@ export function Hero() {
       </motion.div>
 
       {/* bottom fade into next section */}
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" aria-hidden="true" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" aria-hidden="true" />
     </section>
   );
 }

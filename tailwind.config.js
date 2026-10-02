@@ -10,6 +10,8 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        /* Headings & strong text: navy in light mode, near-white in dark mode */
+        heading: "hsl(var(--heading) / <alpha-value>)",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

@@ -21,17 +21,17 @@ export function SolutionDetailPage({ slug }: { slug: string }) {
         title={solution.title}
         description={solution.description}
       />
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-x grid gap-12 py-20 sm:py-24 lg:grid-cols-[1.3fr_1fr]">
           <Reveal>
-            <h2 className="font-display text-2xl font-bold uppercase text-primary">What we provide</h2>
+            <h2 className="font-display text-2xl font-bold uppercase text-heading">What we provide</h2>
             <ul className="mt-6 space-y-4">
               {solution.features.map((f) => (
                 <li key={f} className="flex items-start gap-3.5 rounded-xl border border-border bg-[hsl(var(--soft))] p-4.5 p-4">
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
                     <Check className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
-                  <span className="text-[15px] font-medium text-primary">{f}</span>
+                  <span className="text-[15px] font-medium text-heading">{f}</span>
                 </li>
               ))}
             </ul>
@@ -60,7 +60,7 @@ export function SolutionDetailPage({ slug }: { slug: string }) {
         </div>
 
         <div className="container-x border-t border-border pb-20 pt-14">
-          <h2 className="font-display text-xl font-bold uppercase text-primary">More solutions</h2>
+          <h2 className="font-display text-xl font-bold uppercase text-heading">More solutions</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {related.map((r) => (
               <Link
@@ -70,13 +70,13 @@ export function SolutionDetailPage({ slug }: { slug: string }) {
               >
                 <span className="flex items-center justify-between">
                   <r.icon className="h-5 w-5 text-accent" aria-hidden="true" />
-                  <span className="font-display text-xs font-bold text-primary/25">{r.number}</span>
+                  <span className="font-display text-xs font-bold text-heading/25">{r.number}</span>
                 </span>
-                <h3 className="mt-3 font-display text-[15px] font-bold text-primary">{r.title}</h3>
+                <h3 className="mt-3 font-display text-[15px] font-bold text-heading">{r.title}</h3>
               </Link>
             ))}
           </div>
-          <Link to="/solutions" className="mt-8 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary">
+          <Link to="/solutions" className="mt-8 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-heading">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             Back to all solutions
           </Link>
