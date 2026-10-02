@@ -61,6 +61,12 @@ module.exports = {
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
       },
+      /* Extra steps used across the UI (e.g. border-white/8, bg-accent/12) */
+      opacity: {
+        6: "0.06",
+        8: "0.08",
+        12: "0.12",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

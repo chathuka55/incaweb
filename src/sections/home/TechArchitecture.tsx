@@ -26,7 +26,7 @@ export function TechArchitecture() {
           {techLayers.map((layer, i) => (
             <div key={layer.id}>
               <Reveal delay={i * 90}>
-                <div className="group relative rounded-2xl border border-border bg-white/80 p-5 backdrop-blur transition-all duration-400 hover:border-accent/60 hover:shadow-[0_18px_44px_-18px_rgba(11,35,64,0.3)] sm:p-6">
+                <div className="group relative rounded-2xl border border-border bg-card/80 p-5 backdrop-blur transition-all duration-400 hover:border-accent/60 hover:shadow-[0_18px_44px_-18px_rgba(11,35,64,0.3)] sm:p-6">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex items-center gap-3.5">
                       <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary font-display text-[11px] font-bold text-accent">

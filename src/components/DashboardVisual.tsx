@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -12,7 +11,7 @@ import {
 
 /**
  * Custom "software product" composition for the hero — dashboard, metrics,
- * orders, automation and notification cards with mouse parallax.
+ * orders, automation and notification cards that gently float.
  * Built entirely in code: no stock imagery.
  */
 
@@ -106,14 +105,44 @@ function DashboardCard() {
   );
 }
 
+/** Continuous gentle bob; static when the user prefers reduced motion. */
+function Float({
+  children,
+  className,
+  distance,
+  duration,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  distance: number;
+  duration: number;
+  delay?: number;
+}) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      animate={reduce ? undefined : { y: [0, -distance, 0] }}
+      transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 function FloatingPanel({
   className,
   children,
   delay = 0,
+  distance,
+  duration,
 }: {
   className?: string;
   children: React.ReactNode;
   delay?: number;
+  distance: number;
+  duration: number;
 }) {
   return (
     <motion.div
@@ -122,42 +151,17 @@ function FloatingPanel({
       transition={{ delay, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
-      {children}
+      {/* float starts once the entrance has finished */}
+      <Float distance={distance} duration={duration} delay={delay + 0.7}>
+        {children}
+      </Float>
     </motion.div>
   );
 }
 
 export function DashboardVisual() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const reduce = useReducedMotion();
-
-  useEffect(() => {
-    if (reduce) return;
-    const el = ref.current;
-    if (!el || !window.matchMedia("(pointer: fine)").matches) return;
-    const onMove = (e: MouseEvent) => {
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      setTilt({ x, y });
-    };
-    const onLeave = () => setTilt({ x: 0, y: 0 });
-    el.addEventListener("mousemove", onMove);
-    el.addEventListener("mouseleave", onLeave);
-    return () => {
-      el.removeEventListener("mousemove", onMove);
-      el.removeEventListener("mouseleave", onLeave);
-    };
-  }, [reduce]);
-
-  const layer = (depth: number) => ({
-    transform: `translate3d(${tilt.x * depth}px, ${tilt.y * depth}px, 0)`,
-    transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
-  });
-
   return (
-    <div ref={ref} className="relative mx-auto w-full max-w-[560px]" aria-label="Illustration of a business software dashboard built by INCASOFT">
+    <div className="relative mx-auto w-full max-w-[560px]" aria-label="Illustration of a business software dashboard built by INCASOFT">
       {/* glow + grid */}
       <div className="absolute -inset-10 rounded-[40px] bg-[radial-gradient(closest-side,hsl(192_71%_49%/0.22),transparent)]" aria-hidden="true" />
 
@@ -165,18 +169,21 @@ export function DashboardVisual() {
         initial={{ opacity: 0, y: 40, rotateX: 8 }}
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
         transition={{ delay: 0.45, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        style={layer(10)}
         className="relative"
       >
-        <DashboardCard />
+        <Float distance={6} duration={7} delay={1.35}>
+          <DashboardCard />
+        </Float>
       </motion.div>
 
       {/* floating: automation */}
       <FloatingPanel
         delay={1.15}
+        distance={10}
+        duration={5}
         className="absolute -left-2 -top-7 sm:-left-10 sm:-top-8"
       >
-        <div style={layer(26)} className="rounded-xl border border-white/10 bg-[#0E2A4A]/95 p-3 shadow-[0_18px_50px_-12px_rgba(3,12,24,0.8)] backdrop-blur-xl">
+        <div className="rounded-xl border border-white/10 bg-[#0E2A4A]/95 p-3 shadow-[0_18px_50px_-12px_rgba(3,12,24,0.8)] backdrop-blur-xl">
           <div className="flex items-center gap-2.5">
             <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/15 text-accent">
               <Zap className="h-4 w-4" aria-hidden="true" />
@@ -195,8 +202,8 @@ export function DashboardVisual() {
       </FloatingPanel>
 
       {/* floating: notification */}
-      <FloatingPanel delay={1.35} className="absolute -right-2 top-[38%] sm:-right-10">
-        <div style={layer(34)} className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-[#0E2A4A]/95 p-3 shadow-[0_18px_50px_-12px_rgba(3,12,24,0.8)] backdrop-blur-xl">
+      <FloatingPanel delay={1.35} distance={12} duration={6} className="absolute -right-2 top-[38%] sm:-right-10">
+        <div className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-[#0E2A4A]/95 p-3 shadow-[0_18px_50px_-12px_rgba(3,12,24,0.8)] backdrop-blur-xl">
           <span className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-accent/15 text-accent">
             <Bell className="h-4 w-4" aria-hidden="true" />
             <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
@@ -209,8 +216,8 @@ export function DashboardVisual() {
       </FloatingPanel>
 
       {/* floating: success */}
-      <FloatingPanel delay={1.55} className="absolute -bottom-5 left-6 sm:left-14">
-        <div style={layer(22)} className="flex items-center gap-2 rounded-full border border-white/10 bg-[#0E2A4A]/95 py-2 pl-2.5 pr-4 shadow-[0_18px_50px_-12px_rgba(3,12,24,0.8)] backdrop-blur-xl">
+      <FloatingPanel delay={1.55} distance={8} duration={4.5} className="absolute -bottom-5 left-6 sm:left-14">
+        <div className="flex items-center gap-2 rounded-full border border-white/10 bg-[#0E2A4A]/95 py-2 pl-2.5 pr-4 shadow-[0_18px_50px_-12px_rgba(3,12,24,0.8)] backdrop-blur-xl">
           <CheckCircle2 className="h-4 w-4 text-emerald-300" aria-hidden="true" />
           <p className="text-[10.5px] font-semibold text-white">Report exported · Sales_Q3.pdf</p>
         </div>

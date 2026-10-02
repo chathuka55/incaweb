@@ -150,6 +150,13 @@
   }
 }
 
+/* Theme switch: ThemeToggle drives a circular clip-path reveal on the new snapshot */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal {

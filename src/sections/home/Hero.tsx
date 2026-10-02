@@ -34,16 +34,19 @@ export function Hero() {
         <div className="absolute bottom-[-20%] left-[-10%] h-[420px] w-[420px] rounded-full bg-[hsl(var(--cyan-light))]/8 blur-[120px]" />
       </motion.div>
 
+      {/* bottom fade into next section (kept behind the content) */}
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" aria-hidden="true" />
+
       <motion.div style={{ y: fgY }} className="container-x relative">
-        <div className="grid min-h-[100svh] items-center gap-12 pb-20 pt-32 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:pb-24 lg:pt-36">
+        <div className="grid min-h-[100svh] items-center gap-12 pb-20 pt-32 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:pb-24 lg:pt-36 xl:gap-12">
           <motion.div variants={container} initial="hidden" animate="show">
-            <motion.p variants={item} className="eyebrow !text-accent">
+            <motion.p variants={item} className="eyebrow !text-accent xl:text-xs">
               INCASOFT Solutions · Software Development
             </motion.p>
             <motion.h1
               id="hero-heading"
               variants={item}
-              className="mt-6 font-display text-[clamp(2.1rem,5.4vw,4.1rem)] font-bold uppercase leading-[1.04] tracking-[-0.02em] text-balance"
+              className="mt-6 font-display text-[clamp(2.1rem,5.4vw,4.1rem)] font-bold uppercase leading-[1.04] tracking-[-0.02em] text-balance xl:text-[4.5rem]"
             >
               Building digital solutions for the way{" "}
               <span className="relative inline-block text-accent">
@@ -54,19 +57,19 @@ export function Hero() {
               </span>{" "}
               works.
             </motion.h1>
-            <motion.p variants={item} className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/65 sm:text-base">
+            <motion.p variants={item} className="mt-6 max-w-xl text-[15px] leading-relaxed text-white/65 sm:text-base xl:max-w-2xl xl:text-lg 2xl:text-xl">
               Custom software, web &amp; mobile applications, business automation, POS/ERP, AI and cloud
               solutions designed around your business.
             </motion.p>
             <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
-              <CTA to="/start-a-project" onClick={() => trackEvent("start_project_click", { location: "hero" })}>
+              <CTA to="/start-a-project" className="xl:min-h-[52px] xl:px-7 xl:text-base" onClick={() => trackEvent("start_project_click", { location: "hero" })}>
                 Start a Project
               </CTA>
-              <CTA variant="secondary" direction="down" onClick={scrollToSelector} href="#build-selector">
+              <CTA variant="secondary" direction="down" className="xl:min-h-[52px] xl:px-7 xl:text-base" onClick={scrollToSelector} href="#build-selector">
                 Explore Solutions
               </CTA>
             </motion.div>
-            <motion.div variants={item} className="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-[12px] text-white/45">
+            <motion.div variants={item} className="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-[12px] text-white/45 xl:text-sm">
               {["Custom Software", "POS / ERP Systems", "AI & Automation", "Cloud & APIs"].map((t) => (
                 <span key={t} className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-accent" aria-hidden="true" />
@@ -76,14 +79,12 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          <div className="relative pb-8 lg:pb-0">
+          <div className="relative pb-8 lg:pb-0 xl:[zoom:1.08] 2xl:[zoom:1.18]">
             <DashboardVisual />
           </div>
         </div>
       </motion.div>
 
-      {/* bottom fade into next section */}
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" aria-hidden="true" />
     </section>
   );
 }
