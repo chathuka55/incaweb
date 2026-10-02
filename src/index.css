@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* INCASOFT brand tokens */
+    --navy: 213 71% 15%;            /* #0B2340 */
+    --navy-deep: 211 73% 10%;       /* #07182D */
+    --navy-soft: 212 56% 22%;
+    --cyan: 192 71% 49%;            /* #26B5D6 */
+    --cyan-light: 192 74% 65%;      /* #62D0E8 */
+    --cyan-glow: 192 90% 60%;
+    --ink: 214 57% 15%;             /* #10233B */
+    --muted-ink: 215 16% 47%;       /* #64748B */
+    --soft: 204 33% 97%;            /* #F5F8FA */
+    --line: 210 30% 90%;
+
+    --background: 0 0% 100%;
+    --foreground: var(--ink);
+    --card: 0 0% 100%;
+    --card-foreground: var(--ink);
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--ink);
+    --primary: var(--navy);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--soft);
+    --secondary-foreground: var(--navy);
+    --muted: var(--soft);
+    --muted-foreground: var(--muted-ink);
+    --accent: var(--cyan);
+    --accent-foreground: var(--navy-deep);
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: var(--line);
+    --input: var(--line);
+    --ring: var(--cyan);
+    --radius: 0.9rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-feature-settings: "cv11", "ss01";
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+  ::selection {
+    background: hsl(var(--cyan) / 0.25);
+    color: hsl(var(--navy-deep));
+  }
+  :focus-visible {
+    outline: 2px solid hsl(var(--cyan));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-accent;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-8 bg-accent/70;
+  }
+  /* Digital grid backdrop — signature INCASOFT motif */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--cyan) / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--cyan) / 0.07) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .bg-grid-faint {
+    background-image:
+      linear-gradient(to right, hsl(var(--navy) / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--navy) / 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .glow-cyan {
+    box-shadow: 0 0 40px -8px hsl(var(--cyan) / 0.45);
+  }
+  .link-underline {
+    @apply relative;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1.5px;
+    width: 100%;
+    background: hsl(var(--cyan));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover::after,
+  .link-underline[data-active="true"]::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
